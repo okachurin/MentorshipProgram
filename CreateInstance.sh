@@ -1,5 +1,5 @@
 #!/bin/bash
-/var/lib/jenkins/.local/bin/aws ec2 run-instances --image-id ami-df8406b0 
+aws ec2 run-instances --image-id ami-df8406b0 
 --count 1
 --instance-type $TYPE --key-name WINDOWS-SERVER 
 --security-groups launch-wizard-2 
