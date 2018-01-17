@@ -1,6 +1,6 @@
 #!/bin/bash
-aws ec2 run-instances --image-id $INSTANCE_AMI \
+aws ec2 run-instances --image-id $INSTANCE-AMI \
 --count 1 \
---instance-type $INSTANCE_TYPE --key-name $INSTANCE_KEY \ 
---security-groups $SECURITY_GROUP \
+--instance-type $INSTANCE-TYPE --key-name $INSTANCE-KEY \ 
+--security-groups $SECURITY-GROUP \
 --tag-specifications 'ResourceType=instance,Tags=[{$TAG1},{$TAG2}]' 
