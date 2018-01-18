@@ -1,6 +1,6 @@
 #!/bin/bash
-aws ec2 run-instances --image-id ami-df8406b0 \
+aws ec2 run-instances --image-id $INSTANCEAMI \
 --count 1 \
---instance-type $INSTANCETYPE --key-name WINDOWS-SERVER \
+--instance-type $INSTANCETYPE --key-name $INSTANCEKEY \
 --security-group-ids $SECURITYGROUP \
---tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=SLAVE},{Key=APPLICATION,Value=Tomcat}]' 
+--tag-specifications 'ResourceType=instance,Tags=[{$TAG1},{$TAG2}]' 
