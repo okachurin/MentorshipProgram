@@ -9,4 +9,4 @@ do
 echo "Instance PENDING"
 done
 
-echo "Instance up and Running"
+echo "Instance is up and Running"
