@@ -12,6 +12,8 @@ done
 
 echo "Instance is up and Running"
 
+sleep 10
+
 INSTANCE=$(aws ec2 describe-instances --filters "Name=tag-key,Values=APPLICATION" "Name=instance-state-code,Values=16" \
 --output text --query 'Reservations[*].Instances[*].PublicIpAddress')
 
