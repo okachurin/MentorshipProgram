@@ -11,6 +11,6 @@ echo "Instance PENDING"
 done
 
 echo "Instance is up and Running"
-INSTANCE="aws ec2 describe-instances --filters "Name=tag-key,Values=APPLICATION" "Name=instance-state-code,Values=16"" --output text --query 'Reservations[*].Instances[*].PublicIpAddress'"
+INSTANCE="aws ec2 describe-instances --filters "Name=tag-key,Values=APPLICATION" "Name=instance-state-code,Values=16" --output text --query 'Reservations[*].Instances[*].PublicIpAddress'"
 
 echo "Instance IP is $INSTANCE"
