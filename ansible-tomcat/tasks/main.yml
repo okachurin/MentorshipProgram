@@ -1,0 +1,59 @@
+---
+ - hosts: tomcat-server  
+   remote_user: ubuntu 
+   tasks:
+    - name: Install Java 1.8
+      apt: pkg=openjdk-8-jdk state=present
+      become: true
+
+    - name: add group "tomcat"
+      group: name=tomcat
+      become: true
+
+    - name: add user "tomcat"
+      user: name=tomcat group=tomcat home=/usr/share/tomcat createhome=no
+      become: True
+      become_method: sudo
+
+    - name: Download Tomcat
+      get_url: url=http://archive.apache.org/dist/tomcat/tomcat-8/v8.5.8/bin/apache-tomcat-8.5.8.tar.gz dest=/opt/apache-tomcat-8.5.8.tar.gz
+      become: true
+
+    - name: Extract Tomcat archive
+      command: tar zxvf /opt/apache-tomcat-8.5.8.tar.gz -C /opt/ creates=/opt/tomcat
+      become: true
+
+    - name: copy Tomcat
+      command: mv /opt/apache-tomcat-8.5.8 /opt/tomcat
+      become: true
+
+    - name: Set Tomcat Deployment Directory Permissions
+      file: dest=/opt/tomcat state=directory owner=tomcat  group=tomcat  mode=0775
+      become: true
+
+    - name: Change ownership of Tomcat installation
+      file: path=/opt/tomcat owner=tomcat group=tomcat state=directory recurse=yes
+      become: true
+
+    - name: Configure Tomcat users
+      template: src=tomcat-users.xml dest=/opt/tomcat/conf/
+      become: true
+
+    - name: Configure Tomcat Remote access
+      template: src=context.xml dest=/opt/tomcat/webapps/manager/META-INF
+      become: true
+
+    - name: Install Tomcat init script
+      copy: src=tomcat-initscript.sh dest=/etc/systemd/system/tomcat.service mode=0755
+      become: true
+
+    - name: systemd daemon-reload
+      shell: systemctl daemon-reload
+      become: true
+
+    - name: tomcat-8-start
+      service: name=tomcat state=started enabled=yes
+      become: true
+
+    - name: wait for tomcat to start
+      wait_for: port=8080
