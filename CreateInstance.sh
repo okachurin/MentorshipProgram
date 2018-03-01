@@ -19,6 +19,6 @@ INSTANCE=$(aws ec2 describe-instances --filters "Name=tag-key,Values=APPLICATION
 
 echo "Instance IP is $INSTANCE"
 
-sed -i 's/ipaddress/${INSTANCE}/g' instanceip.txt
+sed -i 's/ipaddress/'$INSTANCE'/g' instanceip.txt
 
 
