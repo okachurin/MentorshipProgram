@@ -1,6 +1,7 @@
 ---
 - name: Install nginx
   apt: name=nginx-full update_cache=yes
+  become: true
 
 - name: Configure wp.dev site
   template: src=default dest=/etc/nginx/sites-available/default
