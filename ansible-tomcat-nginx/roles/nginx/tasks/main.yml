@@ -6,3 +6,4 @@
 - name: Configure wp.dev site
   template: src=default dest=/etc/nginx/sites-available/default
   notify: restart nginx
+  become: true
