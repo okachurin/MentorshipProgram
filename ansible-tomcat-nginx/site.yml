@@ -1,4 +1,6 @@
-- name: Install nginx webservers on a1
+- name: Install tomcat and nginx 
+  hosts: tomcat-server
+  remote_user: ubuntu
   roles:
     - tomcat
     - nginx
