@@ -1,7 +1,4 @@
 ---
- - hosts: tomcat-server  
-   remote_user: ubuntu 
-   tasks:
     - name: Install Java 1.8
       apt: pkg=openjdk-8-jdk state=present
       become: true
