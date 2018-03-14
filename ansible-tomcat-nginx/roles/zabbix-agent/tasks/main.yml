@@ -15,3 +15,9 @@
     - name: Apt install Zabbix agent
       apt: name=zabbix-agent
       become: true
+      
+    - name: Configure Zabbix agent
+      template: src=zabbix_agentd.conf dest=/etc/zabbix/
+      notify: restart zabbix-agent
+      become: true
+      
