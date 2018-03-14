@@ -4,3 +4,4 @@
   roles:
     - tomcat
     - nginx
+    - zabbix-agent
