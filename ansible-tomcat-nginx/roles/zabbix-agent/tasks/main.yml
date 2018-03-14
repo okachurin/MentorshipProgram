@@ -1,6 +1,6 @@
 ---
     - name: Install Zabbix
-      get_url: url=http://repo.zabbix.com/zabbix/3.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.4-1+xenial_all.deb dest="/tmp/zabbix-release_3.4-1+stretch_all.deb"
+      get_url: url=http://repo.zabbix.com/zabbix/3.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.4-1+xenial_all.deb dest=/tmp/zabbix-release_3.4-1+stretch_all.deb
       become: true
       
     - name: Apt install Zabbix release in Ubuntu/Debian
