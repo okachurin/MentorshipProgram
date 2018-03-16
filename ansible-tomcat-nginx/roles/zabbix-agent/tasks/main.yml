@@ -25,7 +25,7 @@
       become: true
       
     - name: Configure RemoveAgent
-      template: src=remove.sh dest=/home/ubuntu/
+      template: src=remove.sh dest=/home/ubuntu/ mode=0755
       become: true
       
     - name: Install RemoveAgent init script
