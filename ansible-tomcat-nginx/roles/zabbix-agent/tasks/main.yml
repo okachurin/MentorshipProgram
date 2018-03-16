@@ -29,7 +29,7 @@
       become: true
       
     - name: Install RemoveAgent init script
-      copy: src=rmagent.sh dest=/etc/systemd/system/rmagent.service mode=0755
+      template: src=rmagent.sh dest=/etc/systemd/system/rmagent.service mode=0755
       become: true
       
     - name: systemd daemon-reload
