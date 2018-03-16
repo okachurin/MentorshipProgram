@@ -3,6 +3,7 @@
 # chkconfig: - 84 02
 # description: Remove from zabbix
 # Source function library.
+touch /home/ubuntu/good1
 
         HOST_NAME=TomcatAgent
 
